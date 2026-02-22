@@ -8,7 +8,8 @@ public class ProdutoPerecivel extends Produto{
 
 
     public ProdutoPerecivel(String desc, double precoCusto, double margemLucro, LocalDate validade){
-
+        super(desc, precoCusto, margemLucro);
+        dataDeValidade = validade;
     }
 
     public double valorDeVenda(){
