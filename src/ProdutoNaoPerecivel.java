@@ -8,8 +8,9 @@ public class ProdutoNaoPerecivel extends Produto{
         super(desc, precoCusto);
     }
 
+    @Override
     public double valorDeVenda(){
-
+        return super.valorDeVenda();
     }
 
 }
