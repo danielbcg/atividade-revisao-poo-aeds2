@@ -1,5 +1,6 @@
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class ProdutoPerecivel extends Produto{
     private static final double DESCONTO = 0.25;
@@ -12,12 +13,29 @@ public class ProdutoPerecivel extends Produto{
         dataDeValidade = validade;
     }
 
-    public double valorDeVenda(){
-
+    public LocalDate getDataDeValidade(){
+        return dataDeValidade;
     }
 
-    public String toString(){
+    @Override
+    public double valorDeVenda(){
+        double valorDeVenda = super.valorDeVenda();
 
+        //calcula qnts dias falta pra vencer o produto
+        LocalDate hoje = LocalDate.now();
+        int diasAteVencer = ChronoUnit.DAYS.between(hoje, dataDeValidade);
+
+        if(diasAteVencer<=PRAZO){
+            return valorDeVenda*(1-DESCONTO);
+        }
+        else{
+            return valorDeVenda;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() +" VALIDADE: " + dataDeValidade;
     }
     
 }
