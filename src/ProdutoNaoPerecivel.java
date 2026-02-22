@@ -1,3 +1,3 @@
-public class ProdutoNaoPerecivel {
+public class ProdutoNaoPerecivel extends Produto{
     
 }
